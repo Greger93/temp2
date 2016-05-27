@@ -1,0 +1,18 @@
+{
+    "contents" : "#' @export\n#' @return The function returns the estimated correlation, standard error, bias and 95 % confidence interval\n#' @title Bootstrap\n#' @keywords Bootstrap correlation confidence_interval\n#' @usage Bootstraptask1(n,x,y)\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @examples  Bootstraptask1(500,Data$Sport,Data$Grades) reads two vectors from the Data with 500 estimations\n#' @param x is a vector of a given data set that you want to find a relation with another set\n#' @param y is another vector of that you want to see if it has a relation to the first data set\n#' @param n is the number of bootstrap estimations\n\nBootstraptask1 <- function(n,x,y){\n  Corr <- cor(x,y)\n  sample.size <- length(x)\n  storage <- numeric(n)\n  for(i in 1:n){\n    j <- sample(1:sample.size, size = sample.size, replace = TRUE)\n    V1 <- x[j]\n    V2 <- y[j]\n    storage[i] <- cor(V1, V2)\n  }\n  se <- sd(storage)/sqrt(sample.size)\n  boot.Corr <- mean(storage)\n  bias <- boot.Corr - Corr\n  confidence <- qnorm(1-(1-0.95)/2)\n  c1 <- mean(storage) + se*confidence\n  c2 <- mean(storage) - se*confidence\n\n  Estimations <- matrix(c(se, bias, c1, c2, boot.Corr), ncol = 1, byrow = TRUE)\n  colnames(Estimations) <- c(\"Estimations\")\n  rownames(Estimations) <- c(\"Standard error\", \"Bias\", \"conf interval 1\", \"conf interval 2\", \"Correlation\")\n  Estimations <- as.table(Estimations)\n  return(Estimations)\n}\n#Bootstraptask1(500,Data$Sport,Data$Grades)\n",
+    "created" : 1464336725937.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "549073831",
+    "id" : "A80C5D54",
+    "lastKnownWriteTime" : 1464336810,
+    "path" : "~/temp2/R/Bootstraptask1.R",
+    "project_path" : "R/Bootstraptask1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

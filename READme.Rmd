@@ -1,0 +1,7 @@
+---
+title: "READme"
+author: "Sebastian Gregersen"
+date: "11. maj 2016"
+output: pdf_document
+---
+read it

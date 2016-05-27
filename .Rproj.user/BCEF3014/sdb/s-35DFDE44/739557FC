@@ -1,0 +1,18 @@
+{
+    "contents" : "#' @export\n#' @return the estimated pi values with a certain amount of thrown needles\n#' @title Buffon needle experiment\n#' @keywords Buffon's_needle pi\n#' @usage Buffontask2(N,l,d)\n#' @description Buffon's needle experiment a way of estimating pi by throwing needles on a floor with parallel lines and count the number of times the needle hits the lines.\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @param N is the amount of needles thrown\n#' @param l is the length of the needles\n#' @param d is the distance between the parallel lines\n#' @examples add the example text\n#' Buffontask2(100,1,2)\n\n\nBuffontask2 <- function(N,l,d){\n  PIlist = c()\n  count = 0\n  hit <- 0\n  for(i in 1:N){\n    start = runif(1,0,d)\n    if(start == 0){\n      hit = hit + 1\n    }else{\n      angle = runif(1,0,180)\n      radians = angle*pi/180\n      height = sin(radians)*l\n      needle = height + start\n      if(needle>=d){\n        hit = hit+1\n      }\n    }\n  }\n  if(round(2*l*n/(d*hit),digits = 6) == round(pi,digits = 6)){\n    count = count + 1\n  }\n  PIlist <- append(PIlist, 2*l*N/(d*hit))\n  2*l/(pi*d) #analytic pHit\n  hit/N #estimated pHit\n  return(mean(PIlist))\n}\n#Buffontask2(100,1,1)\n",
+    "created" : 1464335472679.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3934803396",
+    "id" : "739557FC",
+    "lastKnownWriteTime" : 1464338409,
+    "path" : "~/temp2/R/Buffontask2.R",
+    "project_path" : "R/Buffontask2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
