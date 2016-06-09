@@ -15,8 +15,7 @@ Goodnessoffittask3(x, p)
 The function returns the chi squared test value T
 }
 \examples{
-reads two vectors from the nData which is the data of the soccer cards and then returns the Goodness of fit test value
-Goodnessoffittask3(c(1,2,3),c(0.33,0.33,0.33))
+Goodnessoffittask3(c(1,2,3),c(0.33,0.33,0.33)) reads two vectors and then returns the Goodness of fit test value
 }
 \author{
 Sebastian Gregersen and Jeppe Korsgaard Kristensen

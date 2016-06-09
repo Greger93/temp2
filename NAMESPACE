@@ -3,4 +3,8 @@
 export(Bootstraptask1)
 export(Buffontask2)
 export(Goodnessoffittask3)
+export(Markovchain)
+export(Matrixregression)
 export(chiprobability)
+export(estdens)
+export(plotdens)

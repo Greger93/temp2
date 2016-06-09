@@ -12,30 +12,32 @@
 #' Buffontask2(100,1,2)
 
 
-Buffontask2 <- function(N,l,d){
+Buffontask2 <- function(N,l = 1,d = 1){
   PIlist = c()
-  count = 0
   hit <- 0
   for(i in 1:N){
+    #Simulates the lowest point of the needle using the random uniform distribution.
     start = runif(1,0,d)
+    #If the lowest point of the needle is on top of the first parallel line there is a hit.
     if(start == 0){
       hit = hit + 1
     }else{
+      #Simulates an angle using the random uniform distribution up to 180 since if it is larger than 180 it is not the lowest point of the needle.
       angle = runif(1,0,180)
+      #The angle is calculated to readians since R uses radians in the sinus, cosinus and tangens functions.
       radians = angle*pi/180
+      #The vertical distance of the needle is calculated using calculation rules in perpendicular triangles.
       height = sin(radians)*l
+      #The highest point of the needle is found
       needle = height + start
+      #If that point is higher or equal to the parallel line there is a hit.
       if(needle>=d){
         hit = hit+1
       }
     }
   }
-  if(round(2*l*n/(d*hit),digits = 6) == round(pi,digits = 6)){
-    count = count + 1
-  }
+  #Calculates the estimated pi value of the trial
   PIlist <- append(PIlist, 2*l*N/(d*hit))
-  2*l/(pi*d) #analytic pHit
-  hit/N #estimated pHit
   return(mean(PIlist))
 }
 #Buffontask2(100,1,1)

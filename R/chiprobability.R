@@ -10,7 +10,10 @@
 #' @param n is the amount of generated data from the chi square distribution
 
 chiprobability <- function(x, df, n){
+  #Creates n random numbers from the chi square distribution with a certain amount of degrees of freedom
   chisq <- rchisq(n,df)
+  #Creates a empirical distribution function
   p <- ecdf(chisq)
+  #Finds the probability that you get a value larger than the x value
   return(1-p(x))
 }
