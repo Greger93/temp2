@@ -22,16 +22,3 @@ plotdens <- function(x, n = 500, method = "naive", from = min(x)-(sd(x)/3), to =
   }
   plot(Interval, Probabilities, type = 'l', main = "Density plot") #plots all the n probabilities and binds the points with the "l" shape.
 }
-#plotdens(data, n = 10, method = "kernel")
-#set.seed(1)
-#data <- rgamma(10000,1)
-##### TASK 3 #####
-#a)
-#estdens(faithful[,1])
-#estdens(faithful[,1], method = "kernel")
-#b)
-#plotdens(faithful[,1], n = 200)
-#plotdens(faithful[,1], n = 200, method = "kernel")
-#c)
-#plot lidt forskelligt
-#naive bedst til normalfordelt

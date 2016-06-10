@@ -8,8 +8,7 @@
 #' @param N is the amount of needles thrown
 #' @param l is the length of the needles
 #' @param d is the distance between the parallel lines
-#' @examples add the example text
-#' Buffontask2(100,1,2)
+#' @examples Buffontask2(100,1,1) which will return the estimated pi-value for a 100 needles, a distance between the parallel lines of 1 and with the needle length 1.
 
 
 Buffontask2 <- function(N,l = 1,d = 1){
@@ -40,4 +39,3 @@ Buffontask2 <- function(N,l = 1,d = 1){
   PIlist <- append(PIlist, 2*l*N/(d*hit))
   return(mean(PIlist))
 }
-#Buffontask2(100,1,1)

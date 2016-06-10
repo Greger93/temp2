@@ -1,0 +1,17 @@
+{
+    "contents" : "reject <- 0\na <- 2.5\nb <- 5.5\nn <- 10000\nX <- rep(runif(1), n)\nfor(i in 2:n){\n  U1 <- runif(1)\n  sigma <- dbeta(U1,a,b)/dbeta(X[i-1],a,b)\n  U2 <- runif(1)\n  if(U2 < sigma){\n    X[i] <- U1\n  }else{\n    X[i] <- X[i-1]\n    reject <- reject + 1\n  }\n}\nhist(X, probability = TRUE)\ncurve(dbeta(x,a,b), add = TRUE, col = 'red')\n\n#b)\nreject/n #reject ratepu\n\n#c)\nplot(X, xlim = c(3500,4000), type = 'l')\n\n#ks.test(X, rbeta(n,a,b))\n\n#d)\nset.seed(1)\nrbeta <- rbeta(n,a,b)\nplotdens(rbeta, n = 200, method = \"kernel\") #naive bedre end gaussian pga mere normal fordelt?\nplot(density(rbeta(n,a,b)))\n",
+    "created" : 1465502443207.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4262872627",
+    "id" : "A64719B9",
+    "lastKnownWriteTime" : 1465505385,
+    "path" : "~/files/Task 7.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

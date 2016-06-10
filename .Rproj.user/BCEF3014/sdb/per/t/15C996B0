@@ -1,0 +1,18 @@
+{
+    "contents" : "#' @export\n#' @return The function returns the chi squared test value T\n#' @title Goodness of fit\n#' @keywords Chi-squared Goodness_of_fit\n#' @usage Goodnessoffittask3(x, p)\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @examples Goodnessoffittask3(c(1,2,3),c(0.33,0.33,0.33)) reads two vectors and then returns the Goodness of fit test value\n#' @param x is a vector of a given data set that you want to test for a given probability\n#' @param p is the given probability of a distribution for each data of x\n\nGoodnessoffittask3 <- function(x,p){\n  T <- c()\n  if(is.character(x) == TRUE || is.character(p) == TRUE){\n    stop(\"You need to have integers or double as input\")\n  }\n  n <- sum(x)\n  for(i in 1:length(p)){\n    T <- append(T,(x[i]-n*p[i])^2/(n*p[i]))\n  }\n  return(sum(T))\n}\n\n",
+    "created" : 1465543093484.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4004991514",
+    "id" : "15C996B0",
+    "lastKnownWriteTime" : 1465543766,
+    "path" : "~/temp2/R/Goodnessoffittask3.R",
+    "project_path" : "R/Goodnessoffittask3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

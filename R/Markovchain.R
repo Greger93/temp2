@@ -34,15 +34,3 @@ Markovchain <- function(p,k,n) {
                            "State 4", "State 5", "State 6")
   return(Stateprob) #returns and prints the probabilites.
 }
-
-
-
-####### PART 2 ########
-#A = matrix(c(0.2,0.7,0,0,0,0.1,
-#            0.3,0,0.7,0,0,0,
-#           0,0.5,0,0.5,0,0,
-#          0,0,0,0.9,0.1,0,
-#         0,0,0,0.25,0.5,0.25,
-#        0.4,0,0,0,0.4,0.2),
-#     nrow = 6, ncol = 6, byrow = TRUE)
-#Markovchain(A,3,10000)

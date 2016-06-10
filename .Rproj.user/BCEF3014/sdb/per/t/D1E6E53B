@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @export\n#' @return The function returns the probability that the chi square distribution with a given degree of freedom is larger than a given x\n#' @title Chi probability\n#' @keywords Chi-squared probability distribution estimation and monte Carlo\n#' @usage chiprobability(x, df, n)\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @examples chiprobability(1.5, 2, 10000) which return that there is approximately 47 percent chance that the chi square distribution is larger than 1.5 with 2 degrees of freedom\n#' @param x is the parameter that you want the chi square distribution to be larger than\n#' @param df is degrees of dreedom in the Chi square distribution\n#' @param n is the amount of generated data from the chi square distribution\n\nchiprobability <- function(x, df, n){\n  #Creates n random numbers from the chi square distribution with a certain amount of degrees of freedom\n  chisq <- rchisq(n,df)\n  #Creates a empirical distribution function\n  p <- ecdf(chisq)\n  #Finds the probability that you get a value larger than the x value\n  return(1-p(x))\n}\n",
+    "created" : 1465544313705.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3471498013",
+    "id" : "D1E6E53B",
+    "lastKnownWriteTime" : 1465487040,
+    "path" : "~/temp2/R/chiprobability.R",
+    "project_path" : "R/chiprobability.R",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

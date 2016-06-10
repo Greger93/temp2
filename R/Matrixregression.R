@@ -80,7 +80,7 @@ Matrixregression <- function(formula){
   #Finds the f-statistic
   Fstat <- (SSreg/(length(mf[1,])-1))/(RSS/df)
   #Finds the p-value for a significance level of 5 % of the F distribution
-  pval <- 1-pf(0.95,length(mf[1,])-1,df) #???
+  pval <- 1-pf(Fstat,length(mf[1,])-1,df) #???
   #Creates a matrix to print the data
   test <- matrix(c(ReSE, R2, R2adj, Fstat, df, pval), ncol = 1, byrow = TRUE)
   colnames(test) <- c("Estimations")
@@ -88,45 +88,3 @@ Matrixregression <- function(formula){
   test <- as.table(test)
   return(test)
 }
-
-
-#lm(formula = Data[,4]~Data[,1]+Data[,2]+Data[,3]+Data[,5])
-#summary(lm(formula = Data[,4]~Data[,1]+Data[,2]+Data[,3]+Data[,5]))
-
-#Task 2
-
-#r1 <- rnorm(1000)
-#r2 <- rnorm(1000)
-#r3 <- rnorm(1000)
-#Rnor <- matrix(c(r1, r2, r3), ncol = 3, nrow = 1000)
-
-#CorM <- matrix(c(c(1,0.7,0.3),c(0.7,1,0),c(0.3,0,1)), ncol = 3, nrow = 3)
-
-#Ma <- chol(CorM) #?chol
-
-#Vari <- Rnor%*%Ma
-#Dep <- Vari[,1]
-#Pre1 <- Vari[,2]
-#Pre2 <- Vari[,3]
-
-#cor(Dep, Pre1)
-#cor(Dep, Pre2)
-#cor(Pre1, Pre2)
-
-#reg1 <- lm(Dep~Pre1)
-#plot(Dep, Pre1)
-#abline(reg1)
-
-#reg2 <- lm(Dep~Pre2)
-#plot(Dep, Pre2)
-#abline(reg2)
-
-#reg3 <- lm(Pre1~Pre2)
-#plot(Pre1, Pre2)
-#abline(reg3)
-
-#Matrixregression(Dep~Pre1+Pre2)
-
-#Task 3
-#Data <-read.table("https://raw.githubusercontent.com/haghish/ST516/master/data/height.txt")
-#Matrixregression(Data[,4]~Data[,1]+Data[,2]+Data[,3]+Data[,5])

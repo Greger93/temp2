@@ -20,8 +20,7 @@ the estimated pi values with a certain amount of thrown needles
 Buffon's needle experiment a way of estimating pi by throwing needles on a floor with parallel lines and count the number of times the needle hits the lines.
 }
 \examples{
-add the example text
-Buffontask2(100,1,2)
+Buffontask2(100,1,1) which will return the estimated pi-value for a 100 needles, a distance between the parallel lines of 1 and with the needle length 1.
 }
 \author{
 Sebastian Gregersen and Jeppe Korsgaard Kristensen

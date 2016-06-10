@@ -1,0 +1,18 @@
+{
+    "contents" : "#' @export\n#' @return the estimated pi values with a certain amount of thrown needles\n#' @title Buffon needle experiment\n#' @keywords Buffon's_needle pi\n#' @usage Buffontask2(N,l,d)\n#' @description Buffon's needle experiment a way of estimating pi by throwing needles on a floor with parallel lines and count the number of times the needle hits the lines.\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @param N is the amount of needles thrown\n#' @param l is the length of the needles\n#' @param d is the distance between the parallel lines\n#' @examples Buffontask2(100,1,1) which will return the estimated pi-value for a 100 needles, a distance between the parallel lines of 1 and with the needle length 1.\n\n\nBuffontask2 <- function(N,l = 1,d = 1){\n  PIlist = c()\n  hit <- 0\n  for(i in 1:N){\n    #Simulates the lowest point of the needle using the random uniform distribution.\n    start = runif(1,0,d)\n    #If the lowest point of the needle is on top of the first parallel line there is a hit.\n    if(start == 0){\n      hit = hit + 1\n    }else{\n      #Simulates an angle using the random uniform distribution up to 180 since if it is larger than 180 it is not the lowest point of the needle.\n      angle = runif(1,0,180)\n      #The angle is calculated to readians since R uses radians in the sinus, cosinus and tangens functions.\n      radians = angle*pi/180\n      #The vertical distance of the needle is calculated using calculation rules in perpendicular triangles.\n      height = sin(radians)*l\n      #The highest point of the needle is found\n      needle = height + start\n      #If that point is higher or equal to the parallel line there is a hit.\n      if(needle>=d){\n        hit = hit+1\n      }\n    }\n  }\n  #Calculates the estimated pi value of the trial\n  PIlist <- append(PIlist, 2*l*N/(d*hit))\n  return(mean(PIlist))\n}\n",
+    "created" : 1465543792977.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3201185163",
+    "id" : "7A1D70F9",
+    "lastKnownWriteTime" : 1465544297,
+    "path" : "~/temp2/R/Buffontask2.R",
+    "project_path" : "R/Buffontask2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

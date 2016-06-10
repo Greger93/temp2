@@ -1,0 +1,18 @@
+{
+    "contents" : "#' @export\n#' @return a probability of a given point d if a d value is given. If the d value is not defined it returns the probability of the quantiles and the mean\n#' @title Density estimation\n#' @keywords Density_estimation Gaussian_Kernel Sturges_naive\n#' @usage estdens(x, d, h, method)\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @examples estdens(rgamma(10000,1), 1, 1, \"naive\") which returns the probability of 1 with a bandwidth of 1 and with a random gamma distribution with mean 1.\n#' @param x is the data set you want to obtain probabilities from\n#' @param d is the point in which you want to approximate the probability\n#' @param h is the bandwidth which is the width of the categories that you want to the data into.\n#' @param method is either naive or kernel depending on which method you want to use.\n\nestdens <- function(x, d = 0, h =0, method = \"naive\"){\n  vector <- c()\n  if (d == 0) { #if no point to find the density is given, the function find the probabilitis of the quantiles and the mean\n    Q = as.numeric(quantile(x)) #adding the quantiles\n    Q = append(Q,mean(x)) #adding the mean\n    Q = sapply(Q, function(q) estdens(x,q,h,method)) #estimates the density of the quanttiles and mean with the same x,h and method.\n    Quantiles <- matrix(c(Q[1], Q[2], Q[3], Q[4], Q[5], Q[6]),\n                        ncol = 1, byrow = TRUE)\n    colnames(Quantiles) <- c(\"Probabilities\")\n    rownames(Quantiles) <- c(\"Min\", \"1st quartile\", \"Median\",\n                             \"3rd quartile\", \"Max\", \"Mean\")\n    return(Quantiles) #returns and prints the table of the founded probabilites.\n  }\n  if(method == \"naive\"){\n    if (h == 0) { #if no banwitdh is given, it calculates the banwitdh using the Struges.\n      h = (max(x)-min(x))/(1+log2(length(x)))\n    } #calculates the density with the naive method\n    for(i in 1:length(x)) {\n      if(abs((d-x[i])/h)<1) { #the indecator functino of the naive method\n        vector <- append(vector,(1/2))\n      }\n    }\n    return((1/(h*length(x)))*sum(vector)) #returns the density of the given point with the naive method.\n  } else if (method == \"kernel\"){\n    if (h == 0) { #if no banwitdh is given, it calculates the banwidth using Silverman's suggestion.\n      h = 0.9*sd(x)*length(x)^(-1/5)\n    }\n    for(i in 1:length(x)){ #the gaussian function for kernel estimator\n      vector <- append(vector, (1/sqrt(2*pi))*exp(-((d-x[i])/h)^2/2))\n    }\n    return(1/(length(x)*h)*sum(vector)) #returns the density of the given point with the kernel method.\n  }\n  else { #if a wrong method is typed as method(a method which is not naive or kernel)\n    return(\"not a specified method\")\n  }\n}\n",
+    "created" : 1465500299360.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "834055153",
+    "id" : "4A6663F5",
+    "lastKnownWriteTime" : 1465545130,
+    "path" : "~/temp2/R/estdens.R",
+    "project_path" : "R/estdens.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,18 @@
+{
+    "contents" : "#' @export\n#' @return a density plot of a data set with a given method\n#' @title Density plot\n#' @keywords Density_plot gaussian_kernel Sturges_naive\n#' @usage plotdens(x, n, method, from, to)\n#' @author Sebastian Gregersen and Jeppe Korsgaard Kristensen\n#' @examples plotdens(rgamma(10000,1), 500, \"naive\", 0, 6) returns a density plot of a gamma distribution with mean 1 and the naive method is used in the inverval between 0 and 6.\n#' @param x is the data set you want to make a density plot of\n#' @param n is the number of points used for plotting the density function.\n#' @param method is either naive or kernel depending on which method you want to use.\n#' @param from is the start point of your plot.\n#' @param to is the end point of your plot.\n\nplotdens <- function(x, n = 500, method = \"naive\", from = min(x)-(sd(x)/3), to = max(x)+(sd(x)/3)){\n  Probabilities <- c()\n  if(method != \"naive\" && method != \"kernel\"){\n    return(\"not a specified method\") #if a wrong method is written, the function stops and says, that it is not a specified method\n  }\n  Interval <- seq(from, to, by = (to-from)/(n-1)) #Finds the interval according the \"from\" and \"to\" which is the function is taken. Furthermore it finds the points in which is finds the probabilities to plot.\n  for(i in 1:n){ #finds all the probabilites of the interval-sequence\n    Probabilities <- append(Probabilities, estdens(x, d = Interval[i], method = method)) #Uses the function \"estdens\" to find the n probabilities, at each point of the interval-sequence.\n  }\n  plot(Interval, Probabilities, type = 'l', main = \"Density plot\") #plots all the n probabilities and binds the points with the \"l\" shape.\n}\n",
+    "created" : 1465500302808.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1173341232",
+    "id" : "E4C1B3B6",
+    "lastKnownWriteTime" : 1465544952,
+    "path" : "~/temp2/R/plotdens.R",
+    "project_path" : "R/plotdens.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

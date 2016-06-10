@@ -46,7 +46,3 @@ estdens <- function(x, d = 0, h =0, method = "naive"){
     return("not a specified method")
   }
 }
-#estdens(data, method="kernel")
-#set.seed(1)
-#data <- rgamma(10000,1)
-#print kun 1 h ved ikke givet h
